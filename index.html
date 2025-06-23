@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mallorca - Your Perfect 7-Day Island Adventure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-y: auto;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
+            display: block;
+            position: relative;
+            transition: opacity 0.5s ease;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: flex-start;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 2rem;
+            text-align: left;
+            color: white;
+            animation: fadeInUp 1s ease-out;
+            background: none;
+        }
+
+        .main-title {
+            font-size: clamp(4rem, 12vw, 8rem);
+            font-weight: 700;
+            line-height: 0.9;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.2;
+        }
+
+        .description {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            line-height: 1.6;
+            opacity: 0.85;
+            max-width: 600px;
+            font-weight: 300;
+        }
+
+        nav {
+            width: 100%;
+            background: rgba(30, 58, 138, 0.7);
+            padding: 1rem 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            opacity: 0.85;
+            transition: opacity 0.2s;
+        }
+
+        nav a:focus, nav a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        section {
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            background: none;
+        }
+
+        .scroll-indicator:focus {
+            outline: 2px solid #fff;
+        }
+
+        .scroll-indicator:hover {
+            border-color: white;
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        .scroll-indicator::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid rgba(255, 255, 255, 0.8);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+            transform: rotate(45deg);
+            margin-top: -4px;
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+                text-align: center;
+            }
+
+            .scroll-indicator {
+                bottom: 2rem;
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .main-title {
+                margin-bottom: 1rem;
+            }
+
+            .subtitle {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        /* Background animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
+            animation: backgroundShift 20s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav aria-label="Main navigation">
+        <a href="#intro" tabindex="1">Home</a>
+        <a href="#about" tabindex="2">About</a>
+        <a href="#experiences" tabindex="3">Experiences</a>
+        <a href="#contact" tabindex="4">Contact</a>
+    </nav>
+    <main>
+        <section id="intro" class="container" aria-labelledby="main-title">
+            <h1 class="main-title" id="main-title">Mallorca</h1>
+            <h2 class="subtitle">Your Perfect 7-Day Island Adventure</h2>
+            <p class="description">
+                Discover the magic of Mallorca with our comprehensive guide covering beaches, culture, mountain villages, and unforgettable experiences across this Mediterranean paradise.
+            </p>
+        </section>
+
+        <button class="scroll-indicator" id="scrollIndicator" aria-label="Scroll to next section"></button>
+
+        <section id="about" class="container" aria-labelledby="about-title">
+            <h2 id="about-title">More About Mallorca</h2>
+            <p>
+                Explore hidden coves, taste local cuisine, and hike the Tramuntana mountains. Mallorca offers something for everyone, from adventure seekers to those looking for relaxation.
+            </p>
+        </section>
+
+        <section id="itinerary" class="container" aria-labelledby="itinerary-title">
+            <h2 id="itinerary-title">7-Day Mallorca Itinerary</h2>
+            <ol>
+                <li>
+                    <strong>Day 1 – Palma de Mallorca</strong><br>
+                    Explore La Seu Cathedral (<span aria-label="9 euros">EUR9</span>, 1h), Bellver Castle (<span aria-label="4 euros">EUR4</span>, 1.5h), Es Baluard Museum (<span aria-label="6 euros">EUR6</span>, 1.5h), and the Old Town.<br>
+                    <em>Travel:</em> Palma Airport to City Center ~20 min by taxi (~EUR20).
+                </li>
+                <li>
+                    <strong>Days 2–3 – Serra de Tramuntana</strong><br>
+                    Drive Ma-10 route. Visit Sóller, tram to Port de Sóller (<span aria-label="7 euros">EUR7</span>, 30min), Fornalutx, Deià, Valldemossa (<span aria-label="5 euros">EUR5</span> monastery entry).<br>
+                    Stay 1 night in Sóller or Deià (~EUR120–180/night).<br>
+                    Car rental ~EUR45/day. Drive time ~1h from Palma to Sóller.
+                </li>
+                <li>
+                    <strong>Day 4 – Cap de Formentor &amp; North</strong><br>
+                    Drive to Cap de Formentor (1h 20min). Visit lookout points and Platja de Formentor.<br>
+                    Explore Pollença or Alcúdia old towns (free). Fuel cost approx EUR15.
+                </li>
+                <li>
+                    <strong>Day 5 – East Coast Beaches &amp; Caves</strong><br>
+                    Swim at Cala Mesquida or Cala Agulla. Visit Cuevas del Drach (<span aria-label="16 euros">EUR16</span>, ~1h guided tour).<br>
+                    Drive time from north coast: ~1h 15min. Fuel: ~EUR15.
+                </li>
+                <li>
+                    <strong>Day 6 – Southern Beaches</strong><br>
+                    Es Trenc beach (<span aria-label="7 euros">EUR7</span> parking), Cala Pi, and Cala Llombards.<br>
+                    Drive ~50min from Palma. Budget for snacks/lunch EUR20.
+                </li>
+                <li>
+                    <strong>Day 7 – Palma or Countryside</strong><br>
+                    Relax at Portixol or cycle through vineyards near Binissalem.<br>
+                    Optional wine tour: ~EUR25–40. Bike rental ~EUR20/day.
+                </li>
+            </ol>
+        </section>
+
+        <section id="experiences" class="container" aria-labelledby="exp-title">
+            <h2 id="exp-title">Top Experiences</h2>
+            <ul>
+                <li>Swim at Es Trenc Beach</li>
+                <li>Visit the historic Palma Cathedral</li>
+                <li>Cycle through the Serra de Tramuntana</li>
+                <li>Sample ensaimada in a local bakery</li>
+                <li>Discover the Caves of Drach</li>
+            </ul>
+        </section>
+
+        <section id="contact" class="container" aria-labelledby="contact-title">
+            <h2 id="contact-title">Contact & Info</h2>
+            <p>
+                For more information, reach out to us at <a href="mailto:info@mallorcaguide.com" style="color:#fff;text-decoration:underline;">info@mallorcaguide.com</a>.
+            </p>
+        </section>
+    </main>
+    <script>
+        // Scroll indicator scrolls to next section
+        const scrollIndicator = document.getElementById('scrollIndicator');
+        const aboutSection = document.getElementById('about');
+
+        scrollIndicator.addEventListener('click', function () {
+            aboutSection.scrollIntoView({ behavior: 'smooth' });
+            this.style.transform = 'translateX(-50%) translateY(10px)';
+            setTimeout(() => {
+                this.style.transform = 'translateX(-50%) translateY(0)';
+            }, 200);
+        });
+
+        // Keyboard navigation for scroll indicator
+        document.addEventListener('keydown', function (e) {
+            if ((e.key === 'ArrowDown' || e.key === ' ' || e.key === 'Enter') && document.activeElement === scrollIndicator) {
+                e.preventDefault();
+                scrollIndicator.click();
+            }
+        });
+
+        // Parallax effect for all containers
+        document.addEventListener('mousemove', function (e) {
+            document.querySelectorAll('.container').forEach(container => {
+                const x = (e.clientX / window.innerWidth) * 100;
+                const y = (e.clientY / window.innerHeight) * 100;
+                container.style.transform = `translate(${(x - 50) * 0.02}px, ${(y - 50) * 0.02}px)`;
+            });
+        });
+
+        // Loading animation
+        window.addEventListener('load', function () {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Responsive font size adjustment
+        function adjustFontSize() {
+            const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+            const mainTitle = document.querySelector('.main-title');
+            if (vw < 480) {
+                mainTitle.style.fontSize = '3.5rem';
+            } else if (vw < 768) {
+                mainTitle.style.fontSize = '5rem';
+            } else {
+                mainTitle.style.fontSize = '';
+            }
+        }
+        window.addEventListener('resize', adjustFontSize);
+        adjustFontSize();
+
+        // Touch support for mobile (swipe up scrolls to next section)
+        let touchStartY = 0;
+        document.addEventListener('touchstart', function (e) {
+            touchStartY = e.touches[0].clientY;
+        });
+        document.addEventListener('touchend', function (e) {
+            const touchEndY = e.changedTouches[0].clientY;
+            const diff = touchStartY - touchEndY;
+            if (diff > 50) { // Swipe up
+                scrollIndicator.click();
+            }
+        });
+    </script>
+</body>
+</html>
